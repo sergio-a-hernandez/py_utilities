@@ -45,7 +45,7 @@ class String:
     def get_type(self):
         return type(self.value)
 
-    def index_of_char(self, char):
+    def index_of(self, char):
         return self.value.index(char)
 
     def to_lower(self):
@@ -57,7 +57,7 @@ class String:
     def insert(self, index, insert_str):
         return self.value[:index] + insert_str + self.value[index:]
 
-    def last_index_of_char(self, char):
+    def last_index_of(self, char):
         return self.value.rindex(char)
 
     def length_of(self):
@@ -72,7 +72,7 @@ class String:
     def split(self, delimiter):
         return self.value.split(delimiter)
 
-    def starts_with_char(self, char):
+    def starts_with(self, char):
         return self.value.startswith(char)
 
     def substring(self, start, end):
@@ -128,11 +128,11 @@ if __name__ == "__main__":
     print(firstname.equals(lastname))
     print(firstname.get_hash_code())
     print(firstname.get_type())
-    print(firstname.index_of_char("e"))
+    print(firstname.index_of("e"))
     print(firstname.to_lower())
     print(firstname.to_upper())
     print(firstname.insert(0, "Hello"))
-    print(firstname.last_index_of_char("e"))
+    print(firstname.last_index_of("e"))
     print(firstname.length_of())
     print(firstname.remove(5))
     print(firstname.replace('e', 'i'))
@@ -141,7 +141,7 @@ if __name__ == "__main__":
     for part in split:
         print(part)
 
-    print(firstname.starts_with_char("S"))
+    print(firstname.starts_with("S"))
     print(firstname.substring(2, 7))
     print(firstname.to_char_array())
     print(firstname.trim())
