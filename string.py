@@ -85,25 +85,20 @@ class String:
         return self.value.strip()
 
     def to_value(self):
-        # Oct
-        if self.value.startswith("0") and len(self.value) > 1:
-            try:
-                return int(self.value, 8)
-            except ValueError:
-                pass
-            
-        # Int
-        try:
-            return int(self.value)
-        except ValueError:
-            pass
+        # Octal
+        octal_match = re.match(r'^0[0-7]+$', self.value)
+        if octal_match:
+            return int(self.value, 8)
 
-        # Hex
-        if self.value.startswith("0x"):
-            try:
-                return int(self.value, 16)
-            except ValueError:
-                pass
+        # Decimal
+        decimal_match = re.match(r'^-?\d*\.?\d+$', self.value)
+        if decimal_match:
+            return float(self.value)
+
+        # Hexadecimal
+        hex_match = re.match(r'^0x[0-9a-fA-F]+$', self.value)
+        if hex_match:
+            return int(self.value, 16)
 
         # Si no es posible convertir, devolver None
         return None
